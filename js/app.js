@@ -1,3 +1,20 @@
+//Creating Hero
+
+class Hero {
+  constructor() {
+    this.x = 200;
+    this.y = 350;
+    this.sprite = 'images/char-boy.png';
+  }
+
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+
+}
+
+const player = new Hero();
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
