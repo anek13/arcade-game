@@ -2,13 +2,35 @@
 
 class Hero {
   constructor() {
-    this.x = 200;
-    this.y = 350;
-    this.sprite = 'images/char-boy.png';
+    this.horStep = 101;
+    this.verStep = 83;
+    this.startX = this.horStep * 2;
+    this.startY =  this.verStep * 5 - 20;
+    this.x = this.startX;
+    this.y = this.startY;
+    this.sprite = 'images/char-pink-girl.png';
   }
 
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+
+  handleInput(input) {
+    if (input === 'left' && this.x > 0) {
+      this.x -= this.horStep;
+    }
+
+    else if (input === 'right' && this.x < this.horStep * 4) {
+      this.x += this.horStep;
+    }
+
+    else if (input === 'up' && this.y > 0) {
+      this.y -= this.verStep;
+    }
+
+    else if (input === 'down' && this.y < this.verStep * 4) {
+      this.y += this.verStep;
+    }
   }
 
 }
