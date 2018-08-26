@@ -38,10 +38,10 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 class Hero {
   constructor() {
-    this.horStep = 101;
-    this.verStep = 83;
-    this.startX = this.horStep * 2;
-    this.startY =  this.verStep * 5 - 20;
+    this.stepX = 101;
+    this.stepY = 83;
+    this.startX = this.stepX * 2;
+    this.startY =  this.stepY * 5 - 20;
     this.x = this.startX;
     this.y = this.startY;
     this.sprite = 'images/char-pink-girl.png';
@@ -53,19 +53,19 @@ class Hero {
 
   handleInput(input) {
     if (input === 'left' && this.x > 0) {
-      this.x -= this.horStep;
+      this.x -= this.stepX;
     }
 
-    else if (input === 'right' && this.x < this.horStep * 4) {
-      this.x += this.horStep;
+    else if (input === 'right' && this.x < this.stepX * 4) {
+      this.x += this.stepX;
     }
 
     else if (input === 'up' && this.y > 0) {
-      this.y -= this.verStep;
+      this.y -= this.stepY;
     }
 
-    else if (input === 'down' && this.y < this.verStep * 4) {
-      this.y += this.verStep;
+    else if (input === 'down' && this.y < this.stepY * 4) {
+      this.y += this.stepY;
     }
   }
 
