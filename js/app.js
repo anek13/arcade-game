@@ -1,5 +1,3 @@
-
-
 // Enemies our player must avoid
 var Enemy = function(x,y, speed) {
     // Variables applied to each of our instances go here,
@@ -42,10 +40,11 @@ class Hero {
     this.stepX = 101;
     this.stepY = 83;
     this.startX = this.stepX * 2;
-    this.startY =  this.stepY * 5 - 20;
+    this.startY =  this.stepY * 4 + 60;
     this.x = this.startX;
     this.y = this.startY;
     this.sprite = 'images/char-pink-girl.png';
+    this.victory = false;
   }
 
   render() {
@@ -70,6 +69,31 @@ class Hero {
     }
   }
 
+  reset() {
+    this.x = this.startX;
+    this.y = this.startY;
+  }
+
+  update() {
+
+    //1. check collisions with Enemy
+    for (let enemy of allEnemies) {
+      // console.log(enemy.x);
+      // console.log(player.x);
+      if ((this.y === enemy.y) && (this.x < enemy.x + 80) && (this.x > enemy.x - 80)){
+        console.log('collision');
+        this.reset();
+      }
+    }
+    //2. check end of game
+    if (this.y === -23) {
+      console.log('WIN!');
+      this.victory = true;
+    }
+    //ending the game with a pop-up
+
+  }
+
 }
 
 
@@ -81,13 +105,13 @@ const player = new Hero();
 const bug1 = new Enemy(-101, 0, 120);
 const bug2 = new Enemy(-101, 83, 50);
 const bug3 = new Enemy((-101 * 2,5), 83, 30);
-const bug4 = new Enemy((-101 * 4), 83, 100);
-const bug5 = new Enemy(-101, (83 * 2), 75);
-const bug6 = new Enemy((-101 * 3,5), (83 * 2), 220);
+// const bug4 = new Enemy((-101 * 4), 83, 100);
+// const bug5 = new Enemy(-101, (83 * 2), 75);
+// const bug6 = new Enemy((-101 * 3,5), (83 * 2), 220);
 
 const allEnemies = [];
-allEnemies.push(bug1, bug2, bug3, bug4, bug5, bug6);
-console.log(allEnemies);
+allEnemies.push(bug1,bug2, bug3);
+// allEnemies.push(bug1, bug2, bug3, bug4, bug5, bug6);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
