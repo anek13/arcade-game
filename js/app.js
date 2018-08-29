@@ -1,16 +1,16 @@
 // Enemies our player must avoid
-var Enemy = function(x,y, speed) {
+var Enemy = function(y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.step = 101;
-    this.x = x;
+    this.x = Math.floor(Math.random() * 200) - 300;
     this.y = y + 60;
     this.resetPos = -this.step;
     this.sprite = 'images/enemy-bug.png';
-    this.speed = speed;
+    this.speed = Math.floor(Math.random() * 200) + 20;
 };
 
 // Update the enemy's position, required method for game
@@ -30,6 +30,11 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Enemy.prototype.reset= function() {
+    this.x = Math.floor(Math.random() * 200) - 300;
+    this.speed = Math.floor(Math.random() * 200) + 1;
 };
 
 // Now write your own player class
@@ -75,18 +80,14 @@ class Hero {
   }
 
   update() {
-    //1. check collisions with Enemy
+    //check collisions with Enemy
     for (let enemy of allEnemies) {
-      // console.log(enemy.x);
-      // console.log(player.x);
       if ((this.y === enemy.y) && (this.x < enemy.x + 80) && (this.x > enemy.x - 80)){
-        console.log('collision');
         this.reset();
       }
     }
-    //2. check end of game
+    //check end of game
     if (this.y === -23) {
-      console.log('WIN!');
       this.victory = true;
     }
   }
@@ -96,17 +97,19 @@ class Hero {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+const row1 = 0;
+const row2 = 83;
+const row3 = 2 * 83;
 
 const player = new Hero();
-const bug1 = new Enemy(-101, 0, 120);
-const bug2 = new Enemy(-101, 83, 50);
-const bug3 = new Enemy((-101 * 2,5), 83, 30);
-const bug4 = new Enemy((-101 * 4), 83, 100);
-const bug5 = new Enemy(-101, (83 * 2), 75);
-const bug6 = new Enemy((-101 * 3,5), (83 * 2), 220);
+const bug1 = new Enemy(row1);
+const bug2 = new Enemy(row1);
+const bug3 = new Enemy(row2);
+const bug4 = new Enemy(row2);
+const bug5 = new Enemy(row3);
+const bug6 = new Enemy(row3);
 
 const allEnemies = [];
-// allEnemies.push(bug1,bug2, bug3);
 allEnemies.push(bug1, bug2, bug3, bug4, bug5, bug6);
 
 // This listens for key presses and sends the keys to your

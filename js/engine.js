@@ -31,6 +31,9 @@ var Engine = (function(global) {
       modal.style.display = 'none';
       player.victory = false;
       player.reset();
+      for (let enemy of allEnemies) {
+        enemy.reset();
+      }
       win.requestAnimationFrame(main);
     });
 
