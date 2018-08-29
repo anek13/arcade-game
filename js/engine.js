@@ -22,8 +22,17 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime,
-        id;
+        lastTime;
+
+    var modal = document.getElementById('game-over-modal');
+    var restart = document.getElementById('replay-button');
+
+    restart.addEventListener('click', function() {
+      modal.style.display = 'none';
+      player.victory = false;
+      player.reset();
+      win.requestAnimationFrame(main);
+    });
 
     canvas.width = 505;
     canvas.height = 606;
@@ -59,10 +68,11 @@ var Engine = (function(global) {
         // win.requestAnimationFrame(main);
 
         if (player.victory === true) {
-          win.cancelAnimationFrame(id);
+          // win.cancelAnimationFrame(id);
+          modal.style.display = 'block';
         }
         else {
-          id = win.requestAnimationFrame(main);
+          win.requestAnimationFrame(main);
         }
     }
 

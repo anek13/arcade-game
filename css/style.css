@@ -1,3 +1,53 @@
 body {
     text-align: center;
 }
+
+/* The Modal (background) */
+.modal {
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background: #fefefe url('../images/giphy.gif');
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+   background-color:  #efeff5;
+   margin: 15% auto; /* 15% from the top and centered */
+   padding: 20px;
+   border: 2px solid #3c3c5d;
+   border-radius: 5px;
+   width: 300px;
+   height: 250 px;
+   font-size: 32px;
+   text-align: center;
+}
+
+#replay-button {
+  border: none;
+  width: 150px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px;
+  cursor: pointer;
+  background-color: #c1c1d7;
+  color: #3c3c5d;
+  border: 2px solid #3c3c5d;
+  border-radius: 15px;
+}
+
+#replay-button:hover {
+    background-color: #3c3c5d;
+    color: #c1c1d7;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}

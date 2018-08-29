@@ -75,7 +75,6 @@ class Hero {
   }
 
   update() {
-
     //1. check collisions with Enemy
     for (let enemy of allEnemies) {
       // console.log(enemy.x);
@@ -90,12 +89,9 @@ class Hero {
       console.log('WIN!');
       this.victory = true;
     }
-    //ending the game with a pop-up
-
   }
 
 }
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -105,13 +101,13 @@ const player = new Hero();
 const bug1 = new Enemy(-101, 0, 120);
 const bug2 = new Enemy(-101, 83, 50);
 const bug3 = new Enemy((-101 * 2,5), 83, 30);
-// const bug4 = new Enemy((-101 * 4), 83, 100);
-// const bug5 = new Enemy(-101, (83 * 2), 75);
-// const bug6 = new Enemy((-101 * 3,5), (83 * 2), 220);
+const bug4 = new Enemy((-101 * 4), 83, 100);
+const bug5 = new Enemy(-101, (83 * 2), 75);
+const bug6 = new Enemy((-101 * 3,5), (83 * 2), 220);
 
 const allEnemies = [];
-allEnemies.push(bug1,bug2, bug3);
-// allEnemies.push(bug1, bug2, bug3, bug4, bug5, bug6);
+// allEnemies.push(bug1,bug2, bug3);
+allEnemies.push(bug1, bug2, bug3, bug4, bug5, bug6);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
