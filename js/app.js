@@ -6,11 +6,9 @@ var Enemy = function(y) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.step = 101;
-    this.x = Math.floor(Math.random() * 200) - 300;
     this.y = y + 60;
-    this.resetPos = -this.step;
     this.sprite = 'images/enemy-bug.png';
-    this.speed = Math.floor(Math.random() * 200) + 20;
+    this.reset();
 };
 
 // Update the enemy's position, required method for game
@@ -20,10 +18,10 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if (this.x < this.step * 5) {
-      this.x += this.speed *dt;
+      this.x += this.speed * dt;
     }
     else {
-      this.x = this.resetPos;
+      this.x = -this.step;
     }
 };
 
@@ -32,9 +30,10 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Enemy.prototype.reset= function() {
+//Sets start position end speed of enemy
+Enemy.prototype.reset = function() {
     this.x = Math.floor(Math.random() * 200) - 300;
-    this.speed = Math.floor(Math.random() * 200) + 1;
+    this.speed = Math.floor(Math.random() * 200) + 20;
 };
 
 // Now write your own player class
@@ -60,20 +59,18 @@ class Hero {
     if (input === 'left' && this.x > 0) {
       this.x -= this.stepX;
     }
-
     else if (input === 'right' && this.x < this.stepX * 4) {
       this.x += this.stepX;
     }
-
     else if (input === 'up' && this.y > 0) {
       this.y -= this.stepY;
     }
-
     else if (input === 'down' && this.y < this.stepY * 4) {
       this.y += this.stepY;
     }
   }
 
+  //sets the inital position
   reset() {
     this.x = this.startX;
     this.y = this.startY;
@@ -102,15 +99,11 @@ const row2 = 83;
 const row3 = 2 * 83;
 
 const player = new Hero();
-const bug1 = new Enemy(row1);
-const bug2 = new Enemy(row1);
-const bug3 = new Enemy(row2);
-const bug4 = new Enemy(row2);
-const bug5 = new Enemy(row3);
-const bug6 = new Enemy(row3);
-
 const allEnemies = [];
-allEnemies.push(bug1, bug2, bug3, bug4, bug5, bug6);
+allEnemies.push(new Enemy(row1), new Enemy(row1));
+allEnemies.push(new Enemy(row2), new Enemy(row2));
+allEnemies.push(new Enemy(row3), new Enemy(row3));
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
