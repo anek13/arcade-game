@@ -11,7 +11,13 @@ Web-based Arcade Game. Aim of the game is to reach the water past the ladybugs.
 
 ## Install
 
-To play the game go to https://anek13.github.io/arcade-game/
+To play the game online go to https://anek13.github.io/arcade-game/
+
+To play the game locally, clone this repository 
+```
+git clone https://github.com/anek13/arcade-game.git
+```
+and open the index.html file in your web browser.
 
 ## Instructions
 
